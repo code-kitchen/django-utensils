@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load common_tags bootstrap %}
+
+{% block meta_title %}{% if object.pk %}Edit{% else %}Add{% endif %} {{ form.instance|verbose_name|lower }}{% endblock %}
+
+{% block content %}
+  <h2>{% if object.pk %}Edit{% else %}Add{% endif %} {{ form.instance|verbose_name|lower }}</h2>
+
+  <div class="container">  
+    <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form|bootstrap }}
+      {% include 'fragments/_save_cancel_group.html' %}
+    </form>
+  </div>
+{% endblock %}

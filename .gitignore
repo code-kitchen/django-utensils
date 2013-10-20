@@ -1,0 +1,14 @@
+.DS_Store
+Thumbs.db
+._*
+*.class
+dist/
+build/
+log/
+logs/
+*.*~
+*.bak
+.svn/
+*.pyc
+*.swp
+.idea

@@ -1,0 +1,8 @@
+{% load common_tags %}
+<div class="form-group">
+  <input class="btn btn-large btn-primary" type="submit" value="Save" />
+  {% get_next as cancel_url %}
+  {% if cancel_url %}
+    <a class="btn btn-default btn-large" href="{{ cancel_url }}">Cancel</a>
+  {% endif %}
+</div>

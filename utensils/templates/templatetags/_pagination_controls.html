@@ -1,0 +1,44 @@
+{% load common_tags %}
+<div class="row">
+  <div class="col-md-5">
+    <ul class="pagination">
+        {% with prev=page_obj.has_previous %}
+          <li {% if prev %}{% else %}class="disabled"{% endif %}>
+            <a data-pjax href="{% if prev %}{% filter_query "page" page_obj.previous_page_number "per-page" paginator.per_page "sort-col" sort_col "sort-dir" sort_dir %}{% else %}{% filter_query %}{% endif %}">&laquo;</a>
+          </li>
+        {% endwith %}
+        {% if show_first %}
+          {% with page_number=1 %}
+            <li {% if page_number == page_obj.number %}class="disabled"{% endif %}><a data-pjax href="{% filter_query "page" page_number "per-page" paginator.per_page "sort-col" sort_col "sort-dir" sort_dir %}">{{ page_number }}</a></li>
+            <li class="disabled"><a href="#">&hellip;</a></li>
+          {% endwith %}
+        {% endif %}
+        {% for page_number in page_numbers %}
+          <li {% if page_number == page_obj.number %}class="disabled"{% endif %}><a data-pjax href="{% filter_query "page" page_number "per-page" paginator.per_page "sort-col" sort_col "sort-dir" sort_dir %}">{{ page_number }}</a></li>
+        {% endfor %}
+        {% if show_last %}
+          {% with page_number=paginator.num_pages %}
+            <li class="disabled"><a href="#">&hellip;</a></li>
+            <li {% if page_number == page_obj.number %}class="disabled"{% endif %}><a data-pjax href="{% filter_query "page" page_number "per-page" paginator.per_page "sort-col" sort_col "sort-dir" sort_dir %}">{{ page_number }}</a></li>
+          {% endwith %}
+        {% endif %}
+        {% with next=page_obj.has_next %}
+          <li {% if next %}{% else %}class="disabled"{% endif %}>
+            <a data-pjax href="{% if next %}{% filter_query "page" page_obj.next_page_number "per-page" paginator.per_page "sort-col" sort_col "sort-dir" sort_dir %}{% else %}{% filter_query %}{% endif %}">&raquo;</a>
+          </li>
+        {% endwith %}
+    </ul>
+  </div>
+
+  <div class="col-md-2 text-center">
+    <ul class="pagination"><li class="disabled"><a>{{ paginator.count }} {{ object_model|verbose_name }}{{ paginator.count|pluralize }}</a></li></ul>
+  </div>
+
+  <div class="col-md-5 text-right">
+    <ul class="pagination">
+      {% for per_page in pagination_page_sizes %}
+        <li {% if per_page == paginator.per_page %}class="disabled"{% endif %}><a data-pjax href="{% filter_query "page" 1 "per-page" per_page "sort-col" sort_col "sort-dir" sort_dir %}">{{ per_page }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
