@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load common_tags bootstrap %}
+{% load utensils_tags bootstrap %}
 
 {% block meta_title %}{% if object.pk %}Edit{% else %}Add{% endif %} {{ form.instance|verbose_name|lower }}{% endblock %}
 
