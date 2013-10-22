@@ -1,8 +1,10 @@
 # encoding: utf-8
 import operator
+import urlparse
 
 from django.conf import settings
 from django.contrib import messages
+from django.core.urlresolvers import resolve, Resolver404
 from django.db.models import Q
 
 from braces.views import AccessMixin, StaffuserRequiredMixin
@@ -107,7 +109,22 @@ class PermissionRequiredMixin(AccessMixin):
             request, *args, **kwargs)
 
 
-class StaffViewMixin(MessageMixin, StaffuserRequiredMixin,
+class RedirectToNextMixin(object):
+    def post(self, *args, **kwargs):
+        next = self.request.GET.get('next')
+        if next:
+            current_url = self.request.get_full_path()
+            redirect_url = current_url.split('next=')[1]
+            try:
+                split = urlparse.urlsplit(redirect_url)
+                resolve(split.path)
+                self.success_url = split.path
+            except Resolver404:
+                pass
+        return super(RedirectToNextMixin, self).post(*args, **kwargs)
+
+
+class StaffViewMixin(MessageMixin, RedirectToNextMixin, StaffuserRequiredMixin,
                      PermissionRequiredMixin):
     pass
 
