@@ -17,7 +17,7 @@ class UniqueModelFieldsMixin(object):
     https://code.djangoproject.com/ticket/13075).
 
     unique_fields = ['name', 'username']
-    unique_fields = ['name',  {'field': 'username', case_insensitive=True}]
+    unique_fields = ['name',  {'field': 'username', 'case_insensitive': True}]
     """
     unique_fields = []
 
