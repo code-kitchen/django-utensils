@@ -1,4 +1,4 @@
 django-utensils
 ===============
 
-A collection of reuable components to help build Django projects.
+A collection of reusable components to help build Django projects.
