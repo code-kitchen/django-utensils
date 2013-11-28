@@ -8,7 +8,9 @@ from django.core.exceptions import ImproperlyConfigured
 
 
 def get_env_variable(var_name):
-    """ Get the environment variable or return exception """
+    """
+    Get the environment variable or return exception.
+    """
     try:
       return os.environ[var_name]
     except KeyError:
@@ -48,6 +50,9 @@ def months_between(start, end):
 
 
 def previous_month(year, month):
+    """
+    Returns a tuple of the month prior to the year and month provided.
+    """
     month = month - 1
     if month == 0:
         month = 12
@@ -58,6 +63,9 @@ def previous_month(year, month):
 
 
 def next_month(year, month):
+    """
+    Returns a tuple of the month following the year and month provided.
+    """
     month = month + 1
     if month == 13:
         month = 1
