@@ -4,6 +4,11 @@ from django.utils.functional import curry
 
 
 class SearchForm(forms.Form):
+    """
+    Generic search form that can be used on any page.
+    
+    Used by viewmixins.SearchFormMixin.
+    """
     search = forms.CharField(
         label='', required=False,
         widget=forms.widgets.TextInput())
@@ -11,7 +16,8 @@ class SearchForm(forms.Form):
 
 class UniqueModelFieldsMixin(object):
     """
-    Mixin that enforces unique fields on ModelForm forms.
+    Mixin that enforces unique fields on ModelForm forms to negate the need to
+    redefine fields that are required where blank=True on the model field.
 
     Must be left of ModelForm when defining the form class (see
     https://code.djangoproject.com/ticket/13075).
