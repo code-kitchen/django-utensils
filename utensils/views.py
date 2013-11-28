@@ -12,7 +12,7 @@ class BaseListView(PaginateMixin, OrderByMixin, SearchFormMixin, ListView):
     
         class ActiveCustomerList(BaseListView):
             filter_description = u"Active"
-            queryset = Artist.active.all()
+            queryset = Customer.active.all()
     
     
         {% block content %}
