@@ -10,6 +10,14 @@ from countries_plus.models import Country
 # Abstract models
 
 class TimeStampedModel(models.Model):
+    """
+    Add a created and modified field to a model easily.
+    
+    The hash functions can be used to build file upload paths that aren't
+    easily guessable or distribute large numbers of files between 1000
+    directories by using the time_hash as the first folder in the upload
+    path.
+    """
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
 
@@ -34,6 +42,9 @@ class TimeStampedModel(models.Model):
 
 
 class AddressedModel(models.Model):
+    """
+    Add common address fields to a model easily.
+    """
     address_1 = models.CharField(max_length=128, null=False, blank=True)
     address_2 = models.CharField(max_length=128, null=False, blank=True)
     city = models.CharField(
