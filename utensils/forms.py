@@ -16,8 +16,7 @@ class SearchForm(forms.Form):
 
 class UniqueModelFieldsMixin(object):
     """
-    Mixin that enforces unique fields on ModelForm forms to negate the need to
-    redefine fields that are required where blank=True on the model field.
+    Mixin that enforces unique fields on ModelForm form fields.
 
     Must be left of ModelForm when defining the form class (see
     https://code.djangoproject.com/ticket/13075).
