@@ -34,7 +34,16 @@ unique_fields = ['name',  {'field': 'username', 'case_insensitive': True}]
 
 ### Hidden site
 
-By adding `utensils.middleware.HiddenSiteMiddleware` to your middleware you can prevent people from viewing your site unless they use a query string parameter. The parameter is not needed for subsequent visits (unless cookies are cleared). This is a quick and simple method to keep prying eyes off your staging server for example.
+By adding `utensils.middleware.HiddenSiteMiddleware` to your `MIDDLEWARE_CLASSES` you can prevent people from viewing your site unless they use a query string parameter. The parameter is not needed for subsequent visits (unless cookies are cleared). This is a quick and simple method to keep prying eyes off your staging server for example. Provide the parameter name in the settings variable `HIDDEN_SITE_SECRET`.
+
+For example:
+
+```python
+MIDDLEWARE_CLASSES += ('utensils.middleware.HiddenSiteMiddleware',)
+HIDDEN_SITE_SECRET = 'whisky'
+```
+
+Using the built-in development server browsing to http://localhost/ will give the message "ACCESS DENIED". Browing to http://localhost/?whisky will succeed. Subsequent visits to http://localhost/ (no `?whisky`) with the same browser will succeed until cookies are cleared or the cookie expires (currently set to a year).
 
 ## View mixins
 
