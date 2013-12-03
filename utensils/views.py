@@ -57,5 +57,5 @@ class SetModelFieldView(BaseSetModelFieldView,
 
     Required class settings:
         * `field` or `get_field()` - string containing the field name to alter
-        * `value` or `get_value()` - the value to set the field too
+        * `value` or `get_value()` - the value to set the field to
     """
