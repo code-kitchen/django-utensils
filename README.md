@@ -135,9 +135,13 @@ This view can be used to set the value of a field on a model instance. GET will 
 
 ```python
 class CustomerInactiveView(SetModelFieldView):
+    """
+    Ask the user if they're sure they want to make the customer inactive. If
+    they confirm by submitting the form set is_active to False and save.
+    """
     model = Customer
     field = 'is_active'
-    value = True
+    value = False
     template_name = "customers/customer_inactive.html"
 ```
 
