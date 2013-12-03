@@ -133,7 +133,7 @@ Yields:
 
 This view can be used to set the value of a field on a model instance. GET will display a template (and should be used as a confirmation page) and the value will be set on POST. The view uses `django.views.generic.detail.BaseDetailView` to provide `get_object()`.
 
-```
+```python
 class CustomerInactiveView(SetModelFieldView):
     model = Customer
     field = 'is_active'
