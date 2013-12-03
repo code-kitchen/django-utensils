@@ -6,6 +6,7 @@ from django.conf import settings
 from django.contrib import messages
 from django.core.urlresolvers import resolve, Resolver404
 from django.db.models import Q
+from django.http import HttpResponseRedirect
 
 from braces.views import AccessMixin, StaffuserRequiredMixin
 
@@ -235,3 +236,39 @@ class SearchFormMixin(object):
         if self.search_form.is_valid():
             self.search_filter = self.search_form.cleaned_data['search']
         return super(SearchFormMixin, self).post(request, *args, **kwargs)
+
+
+class SetModelFieldMixin(object):
+    """
+    Mixin that can be used to set a value on a detail view (i.e. the view must
+    have a self.get_object() function) on POST.
+    """
+    success_url = None
+
+    def get_success_url(self):
+        if self.success_url:
+            return self.success_url
+        else:
+            raise ImproperlyConfigured(
+                "No URL to redirect to. Provide a success_url.")
+
+    def get_field(self):
+        try:
+            return getattr(self, 'field')
+        except AttributeError:
+            raise ImproperlyConfigured("No value provided.")
+
+    def get_value(self):
+        try:
+            return getattr(self, 'value')
+        except AttributeError:
+            raise ImproperlyConfigured("No value provided.")
+
+    def set_value(self, *args, **kwargs):
+        self.object = self.get_object()
+        setattr(self.object, self.get_field(), self.get_value())
+        self.object.save()
+        return HttpResponseRedirect(self.get_success_url())
+
+    def post(self, *args, **kwargs):
+        return self.set_value(*args, **kwargs)

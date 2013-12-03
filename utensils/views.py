@@ -1,7 +1,10 @@
 # encoding: utf-8
 from django.views.generic import ListView
+from django.views.generic.detail import (
+    BaseDetailView, SingleObjectTemplateResponseMixin)
 
-from .viewmixins import OrderByMixin, PaginateMixin, SearchFormMixin
+from .viewmixins import (
+    OrderByMixin, PaginateMixin, SearchFormMixin, SetModelFieldMixin)
 
 
 class BaseListView(PaginateMixin, OrderByMixin, SearchFormMixin, ListView):
@@ -36,3 +39,23 @@ class BaseListView(PaginateMixin, OrderByMixin, SearchFormMixin, ListView):
         if filter_description:
             data.update({'filter_description': filter_description})
         return data
+
+
+class BaseSetModelFieldView(SetModelFieldMixin, BaseDetailView):
+    """
+    Base view for setting a single value on a model instance.
+
+    Using this base class requires subclassing to provide a response mixin.
+    """
+
+
+class SetModelFieldView(BaseSetModelFieldView,
+        SingleObjectTemplateResponseMixin):
+    """
+    View for setting a single value on an object on POST. GET should be used for
+    a confirmation view.
+
+    Required class settings:
+        * `field` or `get_field()` - string containing the field name to alter
+        * `value` or `get_value()` - the value to set the field too
+    """
