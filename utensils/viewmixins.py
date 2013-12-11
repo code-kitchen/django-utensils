@@ -7,6 +7,7 @@ from django.contrib import messages
 from django.contrib.auth.views import redirect_to_login
 from django.core.urlresolvers import resolve, Resolver404
 from django.db.models import Q
+from django.core.exceptions import ImproperlyConfigured
 from django.http import HttpResponseRedirect
 
 from braces.views import AccessMixin, StaffuserRequiredMixin
