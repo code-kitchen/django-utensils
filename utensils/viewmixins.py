@@ -258,7 +258,7 @@ class SetModelFieldMixin(object):
         try:
             return getattr(self, 'field')
         except AttributeError:
-            raise ImproperlyConfigured("No value provided.")
+            raise ImproperlyConfigured("No field provided.")
 
     def get_value(self):
         try:
