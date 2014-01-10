@@ -80,3 +80,17 @@ def remove_query_string(url):
     Returns url without any query string parameters.
     """
     return url.split('?')[0]
+
+
+def to_unix_timestamp(dt, epoch=datetime.datetime(1970, 1, 1)):
+    """
+    Return number of seconds since epoch for the given datetime.
+    """
+    return int((dt - epoch).total_seconds())
+
+
+def from_unix_timestamp(ts):
+    """
+    Return datetime object for the given timestamp.
+    """
+    return datetime.datetime.fromtimestamp(int(ts))
