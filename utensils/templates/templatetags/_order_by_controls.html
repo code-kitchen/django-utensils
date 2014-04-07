@@ -1,9 +1,9 @@
 {% load utensils_tags %}
 <a data-pjax {% if sort_col == field_name and sort_dir == 'asc'%}class="muted"{% endif %}
   href="{% filter_query "page" page_obj.number "per-page" paginator.per_page "sort-col" field_name "sort-dir" "asc" %}">
-  <i class="icon-caret-up"></i>
+  <i class="glyphicon glyphicon-chevron-up"></i>
 </a>
 <a data-pjax {% if sort_col == field_name and sort_dir == 'desc'%}class="muted"{% endif %}
   href="{% filter_query "page" page_obj.number "per-page" paginator.per_page "sort-col" field_name "sort-dir" "desc" %}">
-  <i class="icon-caret-down"></i>
+  <i class="glyphicon glyphicon-chevron-down"></i>
 </a>
