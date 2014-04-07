@@ -51,7 +51,7 @@ class AddressedModel(models.Model):
         u"City/Town", max_length=64, null=False, blank=True)
     county = models.CharField(max_length=64, null=False, blank=True)
     postal_code = models.CharField(max_length=16, null=False, blank=True)
-    country = models.ForeignKey(Country, null=False, blank=False)
+    country = models.ForeignKey(Country, null=True, blank=True)
 
     class Meta:
         abstract = True
