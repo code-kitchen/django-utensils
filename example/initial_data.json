@@ -1,0 +1,113 @@
+[
+{
+  "pk": 1, 
+  "model": "example.author", 
+  "fields": {
+    "city": "", 
+    "first_name": "William", 
+    "last_name": "Shakespeare", 
+    "country": null, 
+    "county": "", 
+    "middle_names": "", 
+    "postal_code": "", 
+    "address_1": "", 
+    "address_2": ""
+  }
+},
+{
+  "pk": 2, 
+  "model": "example.author", 
+  "fields": {
+    "city": "", 
+    "first_name": "Enid", 
+    "last_name": "Blyton", 
+    "country": null, 
+    "county": "", 
+    "middle_names": "Mary", 
+    "postal_code": "", 
+    "address_1": "", 
+    "address_2": ""
+  }
+},
+{
+  "pk": 3, 
+  "model": "example.author", 
+  "fields": {
+    "city": "", 
+    "first_name": "Herman", 
+    "last_name": "Hesse", 
+    "country": null, 
+    "county": "", 
+    "middle_names": "", 
+    "postal_code": "", 
+    "address_1": "", 
+    "address_2": ""
+  }
+},
+{
+  "pk": 1, 
+  "model": "example.book", 
+  "fields": {
+    "title": "Steppenwolf", 
+    "author": 3, 
+    "modified": "2014-08-07T18:40:10.120Z", 
+    "publication_date": 1927, 
+    "created": "2014-08-07T18:40:10.120Z"
+  }
+},
+{
+  "pk": 2, 
+  "model": "example.book", 
+  "fields": {
+    "title": "Five on a Treasure Island", 
+    "author": 2, 
+    "modified": "2014-08-07T18:42:36.658Z", 
+    "publication_date": 1942, 
+    "created": "2014-08-07T18:42:36.658Z"
+  }
+},
+{
+  "pk": 3, 
+  "model": "example.book", 
+  "fields": {
+    "title": "Five Go Adventuring Again", 
+    "author": 2, 
+    "modified": "2014-08-07T18:42:49.355Z", 
+    "publication_date": 1943, 
+    "created": "2014-08-07T18:42:49.355Z"
+  }
+},
+{
+  "pk": 4, 
+  "model": "example.book", 
+  "fields": {
+    "title": "The Comedy of Errors", 
+    "author": 1, 
+    "modified": "2014-08-07T18:43:41.642Z", 
+    "publication_date": 1595, 
+    "created": "2014-08-07T18:43:41.642Z"
+  }
+},
+{
+  "pk": 5, 
+  "model": "example.book", 
+  "fields": {
+    "title": "The Taming of the Shrew", 
+    "author": 1, 
+    "modified": "2014-08-07T18:44:16.255Z", 
+    "publication_date": 1590, 
+    "created": "2014-08-07T18:44:16.255Z"
+  }
+},
+{
+  "pk": 6, 
+  "model": "example.book", 
+  "fields": {
+    "title": "The Land of Far-Beyond", 
+    "author": 2, 
+    "modified": "2014-08-07T18:45:18.733Z", 
+    "publication_date": 1942, 
+    "created": "2014-08-07T18:45:18.733Z"
+  }
+}
+]
