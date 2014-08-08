@@ -4,9 +4,13 @@ A collection of reusable components to help build Django projects.
 
 ## Installation
 
-The project is not yet on PyPi. Install directly form GitHub like so:
+To install the latest stable release:
 
-    pip install -e git://github.com/thecodekitchen/django-utensils.git#egg=django-utensils
+    pip install django-utensils
+
+To get the latest dev version, install directly form GitHub like so:
+
+    pip install -e git://github.com/code-kitchen/django-utensils.git#egg=django-utensils
 
 ## Forms
 

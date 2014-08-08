@@ -4,8 +4,16 @@ from setuptools import setup, find_packages
 import utensils
 
 
-with open('README.md') as f:
-    readme = f.read()
+try:
+    from pypandoc import convert
+    read_md = lambda f: convert(f, 'rst')
+except ImportError:
+    print "Warning: pypandoc module not found, could not convert Markdown to RST"
+    read_md = lambda f: open(f, 'r').read()
+
+
+readme = read_md('README.md')
+
 
 with open('LICENSE') as f:
     license = f.read()
@@ -16,6 +24,7 @@ setup(
     version=utensils.__version__,
     description="Useful Django snippets.",
     long_description=readme,
+    url='https://github.com/code-kitchen/django-utensils/',
     author='Ben Tappin',
     author_email='ben@mrben.co.uk',
     license=license,
