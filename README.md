@@ -74,7 +74,7 @@ class CustomerListView(SearchFormMixin, ListView):
         'user__email':  'icontains',
         'first_name':   'icontains',
         'last_name':    'icontains',
-        'postal_code'   'icontains',
+        'postal_code':  'icontains',
     }
 ```
 
