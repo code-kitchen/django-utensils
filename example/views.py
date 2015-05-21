@@ -38,6 +38,7 @@ class BookUpdateView(MessageMixin, UpdateView):
     permission_required = ''
     success_message = 'Successfully updated the book details!'
     error_message = 'Hmm, could not update the book details.'
+    template_name = 'utensils/object_form.html'
 
     def get_success_url(self):
         return reverse_lazy('book_list')

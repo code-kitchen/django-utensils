@@ -36,7 +36,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'countries_plus',
     'utensils',
-    'bootstrapform',
+    'bootstrap3',
     'example',
 )
 

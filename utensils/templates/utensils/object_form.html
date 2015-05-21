@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load utensils_tags bootstrap3 %}
+
+{% block meta_title %}{% if object.pk %}Edit{% else %}Add{% endif %} {{ form.instance|verbose_name|lower }}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>{% if object.pk %}Edit{% else %}Add{% endif %} {{ form.instance|verbose_name|lower }}</h2>
+
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% include 'utensils/_save_cancel_group.html' %}
+    </form>
+</div>
+{% endblock %}

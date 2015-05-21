@@ -29,7 +29,7 @@ setup(
     author_email='ben@mrben.co.uk',
     license=license,
     install_requires=[
-        'django-bootstrap-form>=3.0',
+        'django-bootstrap3',
         'django-braces<1.9.0',
         'django-countries-plus>=0.1.5',
         'django-storages>=1.1',

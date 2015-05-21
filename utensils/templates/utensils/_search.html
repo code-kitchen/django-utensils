@@ -1,7 +1,7 @@
-{% load bootstrap %}
+{% load bootstrap3 %}
 {% if search_form %}
   <form action="" method="GET" role="form">
-    {{ search_form|bootstrap }}
+    {% bootstrap_form search_form %}
     <div class="form-group">
       <button type="submit" class="btn btn-primary">Search</button>
     </div>
