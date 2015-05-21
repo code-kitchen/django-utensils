@@ -12,6 +12,8 @@ To get the latest dev version, install directly form GitHub like so:
 
     pip install -e git://github.com/code-kitchen/django-utensils.git#egg=django-utensils
 
+Many of the template tags require the `request` object. You need to add 'django.template.context_processors.request' (Django 1.6 and 17) or 'django.template.context_processors.request' (Django 1.8) to the template context processors in your settings.
+
 ## Forms
 
 ### `SearchForm`
@@ -56,6 +58,8 @@ Collection of mixins for class-based views.
 ### List view pagination
 
 The `PaginateMixin` returns the paginate by setting used by the pagination template tag `{% pagination %}` so the Django `ListView` functions can use it.
+
+You will need to add `utensils.context_processors.pagination` to your context processors for the template tag to work. Set `settings.PAGINATION_PAGE_SIZES` to control the page size, if not set the default `[20, 50, 100]` is used.
 
 ### List view ordering
 

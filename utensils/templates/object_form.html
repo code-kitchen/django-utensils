@@ -10,7 +10,7 @@
     <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
       {% csrf_token %}
       {{ form|bootstrap }}
-      {% include 'fragments/_save_cancel_group.html' %}
+      {% include 'utensils/_save_cancel_group.html' %}
     </form>
   </div>
 {% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block page_title %}Confirm stock change{% endblock page_title %}
+
+{% block content %}
+<div class="container">
+	<div class="alert alert-info">
+		This page uses <code>SetModelFieldView</code>.
+	</div>
+	<h1>Confirm change to stock for '{{ object }}'</h1>
+
+	<p>The book is currently {% if objects.in_stock %}in stock{% else %}out of stock{% endif %}.
+		Do you wish to change this to <strong>{% if objects.in_stock %}out of stock{% else %}in stock{% endif %}</strong>?</p>
+
+	<form action="" method="post">
+		{% csrf_token %}
+		<button class="btn btn-primary" type="submit">Yes</button>
+	</form>
+</div>
+{% endblock content %}

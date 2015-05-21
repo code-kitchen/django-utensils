@@ -1,1 +1,34 @@
-{{ object_list }}
+{% extends 'base.html' %}
+{% load utensils_tags %}
+
+{% block page_title %}Books{% endblock page_title %}
+
+{% block content %}
+	<div class="container">
+		<div class="alert alert-info">
+			This page uses <code>BaseListView</code> (<code>PaginateMixin</code>, <code>OrderByMixin</code>, <code>SearchFormMixin</code>).
+		</div>
+		<h1>Books</h1>
+
+		{% include 'utensils/_search.html' %}
+
+		{% pagination %}
+		<table class="table">
+			<tr>
+				<th>Title {% order_by 'title' %}</th>
+				<th>Author</th>
+				<th>In stock?</th>
+				<th>Actions</th>
+			</tr>
+			{% for book in object_list %}
+				<tr>
+					<td>{{ book.title }}</td>
+					<td>{{ book.author }}</td>
+					<td>{{ book.in_stock }}</td>
+					<td><a href="{% url 'book_edit' book.pk %}">Edit</a> | <a href="{% url 'book_toggle_in_stock' book.pk %}">Toggle stock</a></td>
+				</tr>
+			{% endfor %}
+		</table>
+		{% pagination %}
+	</div>
+{% endblock %}

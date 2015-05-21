@@ -30,7 +30,7 @@ setup(
     license=license,
     install_requires=[
         'django-bootstrap-form>=3.0',
-        'django-braces<1.4.0',
+        'django-braces<1.9.0',
         'django-countries-plus>=0.1.5',
         'django-storages>=1.1',
         'boto>=2.13.3',

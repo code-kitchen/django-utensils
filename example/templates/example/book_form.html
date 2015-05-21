@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load bootstrap %}
+
+{% block page_title %}Book details{% endblock page_title %}
+
+{% block content %}
+<div class="container">
+	<div class="alert alert-info">
+		This page uses <code>MessageMixin</code> and <code>UniqueModelFieldsMixin</code>.
+		Try setting the title to the name of an existing book, e.g. 'Five Go Adventuring Again' or 'The Taming of the Shrew'.
+	</div>
+	<h1>Book details</h1>
+
+	<form action="" method="post">
+		{% csrf_token %}
+		{{ form|bootstrap }}
+		<button class="btn btn-primary" type="submit">Save</button>
+	</form>
+</div>
+{% endblock content %}

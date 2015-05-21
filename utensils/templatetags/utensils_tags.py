@@ -26,7 +26,7 @@ def verbose_name_plural(obj):
 
 
 @register.inclusion_tag(
-    'templatetags/_order_by_controls.html', takes_context=True)
+    'utensils/_order_by_controls.html', takes_context=True)
 def order_by(context, field_name):
     return {
         'field_name': field_name,
@@ -39,7 +39,7 @@ def order_by(context, field_name):
 
 
 @register.inclusion_tag(
-    'templatetags/_pagination_controls.html', takes_context=True)
+    'utensils/_pagination_controls.html', takes_context=True)
 def pagination(context, adjacent_pages=2):
     current_page = context['page_obj'].number
     total_pages = context['paginator'].num_pages

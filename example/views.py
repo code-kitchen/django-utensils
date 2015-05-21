@@ -1,5 +1,10 @@
-from utensils.views import BaseListView, SetModelFieldView
+from django.core.urlresolvers import reverse_lazy
+from django.views.generic import TemplateView, UpdateView
 
+from utensils.views import BaseListView, SetModelFieldView
+from utensils.viewmixins import MessageMixin, PermissionRequiredMixin
+
+from .forms import BookForm
 from .models import Author, Book
 
 
@@ -14,8 +19,25 @@ class BookListView(BaseListView):
     }
 
 
-class SetNotInStockView(SetModelFieldView):
+class ToggleNotInStockView(SetModelFieldView):
     model = Book
     field = 'in_stock'
     value = False
-    template_name = 'example/book_confirm_out_of_stock.html'
+    template_name = 'example/book_confirm_toggle_stock.html'
+
+    def get_value(self):
+        return not self.object.in_stock
+
+    def get_success_url(self):
+        return reverse_lazy('book_list')
+
+
+class BookUpdateView(MessageMixin, UpdateView):
+    model = Book
+    form_class = BookForm
+    permission_required = ''
+    success_message = 'Successfully updated the book details!'
+    error_message = 'Hmm, could not update the book details.'
+
+    def get_success_url(self):
+        return reverse_lazy('book_list')

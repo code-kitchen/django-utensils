@@ -10,7 +10,11 @@ from django.db.models import Q
 from django.core.exceptions import ImproperlyConfigured, PermissionDenied
 from django.http import HttpResponseRedirect
 
-from braces.views import AccessMixin, StaffuserRequiredMixin
+from braces.views import StaffuserRequiredMixin
+try:
+    from braces.views._access import AccessMixin
+except ImportError:
+    from braces.views import AccessMixin
 
 from .forms import SearchForm
 
