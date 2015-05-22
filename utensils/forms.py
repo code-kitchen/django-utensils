@@ -34,6 +34,10 @@ class UniqueModelFieldsMixin(object):
             model = self.Meta.model
             value = self.cleaned_data.get(field)
 
+            if not value:
+                # Otherwise null/empty string is not allowed more than once.
+                return value
+
             case = 'i' if case_insensitive else ''
             qs = model.objects.filter(
                 **{field + '__{}exact'.format(case): value})
