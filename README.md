@@ -14,6 +14,8 @@ To get the latest dev version, install directly form GitHub like so:
 
 Many of the template tags require the `request` object. You need to add 'django.template.context_processors.request' (Django 1.6 and 17) or 'django.template.context_processors.request' (Django 1.8) to the template context processors in your settings.
 
+To use the `AddressedModel` you will need to add `countries_plus` to your `INSTALLED_APPS` setting.
+
 ## Forms
 
 ### `SearchForm`

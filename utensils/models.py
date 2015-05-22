@@ -3,8 +3,7 @@ import hashlib
 import time
 
 from django.db import models
-
-from countries_plus.models import Country
+from django.utils.translation import ugettext_lazy as _
 
 
 # Abstract models
@@ -18,8 +17,8 @@ class TimeStampedModel(models.Model):
     directories by using the time_hash as the first folder in the upload
     path.
     """
-    created = models.DateTimeField(auto_now_add=True)
-    modified = models.DateTimeField(auto_now=True)
+    created = models.DateTimeField(_(u"created"), auto_now_add=True)
+    modified = models.DateTimeField(_(u"modified"), auto_now=True)
 
     class Meta:
         abstract = True
@@ -45,13 +44,17 @@ class AddressedModel(models.Model):
     """
     Add common address fields to a model easily.
     """
-    address_1 = models.CharField(max_length=128, null=False, blank=True)
-    address_2 = models.CharField(max_length=128, null=False, blank=True)
+    address_1 = models.CharField(
+        _(u"address 1"), max_length=128, null=False, blank=True)
+    address_2 = models.CharField(
+        _(u"address 2"), max_length=128, null=False, blank=True)
     city = models.CharField(
-        u"City/Town", max_length=64, null=False, blank=True)
-    county = models.CharField(max_length=64, null=False, blank=True)
-    postal_code = models.CharField(max_length=16, null=False, blank=True)
-    country = models.ForeignKey(Country, null=True, blank=True)
+        _(u"City/Town"), max_length=64, null=False, blank=True)
+    county = models.CharField(
+        _(u"county"), max_length=64, null=False, blank=True)
+    postal_code = models.CharField(
+        _(u"postal code"), max_length=16, null=False, blank=True)
+    country = models.ForeignKey('countries_plus.Country', null=True, blank=True)
 
     class Meta:
         abstract = True

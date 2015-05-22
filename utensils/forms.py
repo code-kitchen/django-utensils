@@ -1,5 +1,6 @@
 # encoding: utf-8
 from django import forms
+from django.utils.translation import ugettext_lazy as _
 from django.utils.functional import curry
 
 
@@ -41,7 +42,8 @@ class UniqueModelFieldsMixin(object):
 
             if qs.exists():
                 raise forms.ValidationError(
-                    "That {} is not available.".format(field.replace('_', ' ')))
+                    _(u"That {} is not available.".format(
+                        field.replace('_', ' '))))
             return value
 
         for field in self.unique_fields:
