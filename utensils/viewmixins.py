@@ -1,6 +1,11 @@
 # encoding: utf-8
 import operator
-import urlparse
+try:
+    # Python 3.
+    from urllib.parse import urlsplit
+except ImportError:
+    # Python 2.
+    from urllib import urlsplit
 
 from django.conf import settings
 from django.contrib import messages
@@ -123,7 +128,7 @@ class RedirectToNextMixin(object):
             current_url = self.request.get_full_path()
             redirect_url = current_url.split('next=')[1]
             try:
-                split = urlparse.urlsplit(redirect_url)
+                split = urlsplit(redirect_url)
                 resolve(split.path)
                 self.success_url = split.path
             except Resolver404:
