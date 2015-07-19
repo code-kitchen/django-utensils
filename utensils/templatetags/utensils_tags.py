@@ -1,5 +1,4 @@
 # encoding: utf-8
-from itertools import izip
 from django import template
 from django.http import QueryDict
 
@@ -90,7 +89,7 @@ class FilterQuery(template.Node):
 
 def pairwise(varlist):
     l = iter(varlist)
-    return izip(l, l)
+    return zip(l, l)
 
 
 @register.tag
