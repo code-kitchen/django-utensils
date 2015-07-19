@@ -1,9 +1,11 @@
 {% load utensils_tags %}
-<a data-pjax {% if sort_col == field_name and sort_dir == 'asc'%}class="text-muted"{% endif %}
+{% spaceless %}
+<a {% if sort_col == field_name and sort_dir == 'asc'%}class="text-muted"{% endif %}
   href="{% filter_query "page" page_obj.number "per-page" paginator.per_page "sort-col" field_name "sort-dir" "asc" %}">
   <i class="glyphicon glyphicon-chevron-up"></i>
 </a>
-<a data-pjax {% if sort_col == field_name and sort_dir == 'desc'%}class="text-muted"{% endif %}
+<a {% if sort_col == field_name and sort_dir == 'desc'%}class="text-muted"{% endif %}
   href="{% filter_query "page" page_obj.number "per-page" paginator.per_page "sort-col" field_name "sort-dir" "desc" %}">
   <i class="glyphicon glyphicon-chevron-down"></i>
 </a>
+{% endspaceless %}
