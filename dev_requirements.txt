@@ -1,5 +1,5 @@
 boto==2.38.0
-Django==1.8.2
+Django==1.11.28
 django-bootstrap3==5.4.0
 django-braces==1.8.0
 django-countries-plus==0.3.3
