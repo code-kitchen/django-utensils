@@ -9,7 +9,7 @@ class Author(AddressedModel):
     last_name = models.CharField(max_length=255, null=False, blank=False)
 
     class Meta:
-        ordering = ('last_name',)
+        ordering = ("last_name",)
 
     def __unicode__(self):
         return u"{}, {}".format(self.last_name, self.first_name)

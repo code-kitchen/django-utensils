@@ -9,7 +9,5 @@ def pagination(request):
     Example settings config:
       PAGINATION_PAGE_SIZES = [20, 50, 100]
     """
-    page_sizes = getattr(settings, 'PAGINATION_PAGE_SIZES', [20, 50, 100])
-    return {
-        'pagination_page_sizes': page_sizes,
-    }
+    page_sizes = getattr(settings, "PAGINATION_PAGE_SIZES", [20, 50, 100])
+    return {"pagination_page_sizes": page_sizes}

@@ -10,9 +10,8 @@ class SearchForm(forms.Form):
     
     Used by viewmixins.SearchFormMixin.
     """
-    search = forms.CharField(
-        label='', required=False,
-        widget=forms.widgets.TextInput())
+
+    search = forms.CharField(label="", required=False, widget=forms.widgets.TextInput())
 
 
 class UniqueModelFieldsMixin(object):
@@ -25,6 +24,7 @@ class UniqueModelFieldsMixin(object):
     unique_fields = ['name', 'username']
     unique_fields = ['name',  {'field': 'username', 'case_insensitive': True}]
     """
+
     unique_fields = []
 
     def __init__(self, *args, **kwargs):
@@ -38,25 +38,25 @@ class UniqueModelFieldsMixin(object):
                 # Otherwise null/empty string is not allowed more than once.
                 return value
 
-            case = 'i' if case_insensitive else ''
-            qs = model.objects.filter(
-                **{field + '__{}exact'.format(case): value})
+            case = "i" if case_insensitive else ""
+            qs = model.objects.filter(**{field + "__{}exact".format(case): value})
             if self.instance.pk:
                 qs = qs.exclude(pk=self.instance.pk)
 
             if qs.exists():
                 raise forms.ValidationError(
-                    _(u"That {} is not available.".format(
-                        field.replace('_', ' '))))
+                    _(u"That {} is not available.".format(field.replace("_", " ")))
+                )
             return value
 
         for field in self.unique_fields:
             if isinstance(field, dict):
-                case_insensitive = field.get('case_insensitive', False)
-                field_name = field['field']
+                case_insensitive = field.get("case_insensitive", False)
+                field_name = field["field"]
             else:
                 field_name = field
                 case_insensitive = False
             func_name = "clean_{}".format(field_name)
-            setattr(self, func_name,
-                curry(_make_validator, field_name, case_insensitive))
+            setattr(
+                self, func_name, curry(_make_validator, field_name, case_insensitive)
+            )
