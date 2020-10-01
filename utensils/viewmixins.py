@@ -20,7 +20,7 @@ except ImportError:
 from .forms import SearchForm
 
 
-class MessageMixin(object):
+class MessageMixin:
     """
     Make it easy to display notification messages when using Class Based Views.
     """
@@ -121,7 +121,7 @@ class PermissionRequiredMixin(AccessMixin):
         return super(PermissionRequiredMixin, self).dispatch(request, *args, **kwargs)
 
 
-class RedirectToNextMixin(object):
+class RedirectToNextMixin:
     def post(self, *args, **kwargs):
         next = self.request.GET.get("next")
         if next:
@@ -142,7 +142,7 @@ class StaffViewMixin(
     pass
 
 
-class PaginateMixin(object):
+class PaginateMixin:
     """
     Adds page size support to a ListView.
     """
@@ -159,7 +159,7 @@ class PaginateMixin(object):
         return paginate_by
 
 
-class OrderByMixin(object):
+class OrderByMixin:
     """
     Add support for ordering the queryset in your ListView.
     """
@@ -185,7 +185,7 @@ class OrderByMixin(object):
         return context_data
 
 
-class SearchFormMixin(object):
+class SearchFormMixin:
     """
     Present a form element to filter a ListView, this class reimplements
     some of FormMixin due to it missing a super() call in get_context_data
@@ -254,7 +254,7 @@ class SearchFormMixin(object):
         return super(SearchFormMixin, self).post(request, *args, **kwargs)
 
 
-class SetModelFieldMixin(object):
+class SetModelFieldMixin:
     """
     Mixin that can be used to set a value on a detail view (i.e. the view must
     have a self.get_object() function) on POST.

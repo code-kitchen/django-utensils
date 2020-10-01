@@ -13,7 +13,7 @@ class SearchForm(forms.Form):
     search = forms.CharField(label="", required=False, widget=forms.widgets.TextInput())
 
 
-class UniqueModelFieldsMixin(object):
+class UniqueModelFieldsMixin:
     """
     Mixin that enforces unique fields on ModelForm form fields.
 

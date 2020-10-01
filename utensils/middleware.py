@@ -5,7 +5,7 @@ from django.http import HttpResponseForbidden
 HIDDEN_SITE_SECRET = getattr(settings, "HIDDEN_SITE_SECRET", None)
 
 
-class HiddenSiteMiddleware(object):
+class HiddenSiteMiddleware:
     """
     Blocks pages unless a cookie or GET parameter is present.
     E.g. /some/path/?secret (where 'secret' is HIDDEN_SITE_SECRET)
