@@ -1,12 +1,6 @@
 from functools import reduce
 import operator
-
-try:
-    # Python 3.
-    from urllib.parse import urlsplit
-except ImportError:
-    # Python 2.
-    from urllib import urlsplit
+from urllib.parse import urlsplit
 
 from django.conf import settings
 from django.contrib import messages
