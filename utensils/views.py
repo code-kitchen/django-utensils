@@ -14,7 +14,7 @@ class BaseListView(PaginateMixin, OrderByMixin, SearchFormMixin, ListView):
     Supports a filter description that can be used in templates:
 
         class ActiveCustomerList(BaseListView):
-            filter_description = u"Active"
+            filter_description = "Active"
             queryset = Customer.active.all()
 
 

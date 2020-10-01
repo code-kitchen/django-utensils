@@ -44,7 +44,7 @@ class UniqueModelFieldsMixin(object):
 
             if qs.exists():
                 raise forms.ValidationError(
-                    _(u"That {} is not available.".format(field.replace("_", " ")))
+                    _("That {} is not available.".format(field.replace("_", " ")))
                 )
             return value
 

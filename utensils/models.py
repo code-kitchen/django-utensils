@@ -18,8 +18,8 @@ class TimeStampedModel(models.Model):
     path.
     """
 
-    created = models.DateTimeField(_(u"created"), auto_now_add=True)
-    modified = models.DateTimeField(_(u"modified"), auto_now=True)
+    created = models.DateTimeField(_("created"), auto_now_add=True)
+    modified = models.DateTimeField(_("modified"), auto_now=True)
 
     class Meta:
         abstract = True
@@ -46,15 +46,15 @@ class AddressedModel(models.Model):
     """
 
     address_1 = models.CharField(
-        _(u"address 1"), max_length=128, null=False, blank=True
+        _("address 1"), max_length=128, null=False, blank=True
     )
     address_2 = models.CharField(
-        _(u"address 2"), max_length=128, null=False, blank=True
+        _("address 2"), max_length=128, null=False, blank=True
     )
-    city = models.CharField(_(u"City/Town"), max_length=64, null=False, blank=True)
-    county = models.CharField(_(u"county"), max_length=64, null=False, blank=True)
+    city = models.CharField(_("City/Town"), max_length=64, null=False, blank=True)
+    county = models.CharField(_("county"), max_length=64, null=False, blank=True)
     postal_code = models.CharField(
-        _(u"postal code"), max_length=16, null=False, blank=True
+        _("postal code"), max_length=16, null=False, blank=True
     )
     country = models.ForeignKey("countries_plus.Country", null=True, blank=True)
 

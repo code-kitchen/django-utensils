@@ -12,7 +12,7 @@ class Author(AddressedModel):
         ordering = ("last_name",)
 
     def __unicode__(self):
-        return u"{}, {}".format(self.last_name, self.first_name)
+        return "{}, {}".format(self.last_name, self.first_name)
 
 
 class Book(TimeStampedModel):
