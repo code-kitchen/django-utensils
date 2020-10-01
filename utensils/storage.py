@@ -31,5 +31,5 @@ Example settings config:
   STATICFILES_STORAGE = 'utensils.storage.StaticRootS3BotoStorage'
   DEFAULT_FILE_STORAGE = 'utensils.storage.MediaRootS3BotoStorage'
 """
-StaticRootS3BotoStorage = lambda: S3BotoStorage(**settings.AWS['STATIC'])
-MediaRootS3BotoStorage = lambda: S3BotoStorage(**settings.AWS['MEDIA'])
+StaticRootS3BotoStorage = lambda: S3BotoStorage(**settings.AWS["STATIC"])
+MediaRootS3BotoStorage = lambda: S3BotoStorage(**settings.AWS["MEDIA"])

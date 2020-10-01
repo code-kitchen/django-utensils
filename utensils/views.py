@@ -1,10 +1,11 @@
 # encoding: utf-8
 from django.views.generic import ListView
 from django.views.generic.detail import (
-    BaseDetailView, SingleObjectTemplateResponseMixin)
+    BaseDetailView,
+    SingleObjectTemplateResponseMixin,
+)
 
-from .viewmixins import (
-    OrderByMixin, PaginateMixin, SearchFormMixin, SetModelFieldMixin)
+from .viewmixins import OrderByMixin, PaginateMixin, SearchFormMixin, SetModelFieldMixin
 
 
 class BaseListView(PaginateMixin, OrderByMixin, SearchFormMixin, ListView):
@@ -29,15 +30,16 @@ class BaseListView(PaginateMixin, OrderByMixin, SearchFormMixin, ListView):
           <! -- more template -->
         {% end block %}
     """
+
     def get_filter_description(self):
-        if hasattr(self, 'filter_description'):
+        if hasattr(self, "filter_description"):
             return self.filter_description
-    
+
     def get_context_data(self, **kwargs):
         data = super(BaseListView, self).get_context_data(**kwargs)
         filter_description = self.get_filter_description()
         if filter_description:
-            data.update({'filter_description': filter_description})
+            data.update({"filter_description": filter_description})
         return data
 
 
@@ -49,8 +51,7 @@ class BaseSetModelFieldView(SetModelFieldMixin, BaseDetailView):
     """
 
 
-class SetModelFieldView(BaseSetModelFieldView,
-        SingleObjectTemplateResponseMixin):
+class SetModelFieldView(BaseSetModelFieldView, SingleObjectTemplateResponseMixin):
     """
     View for setting a single value on an object on POST. GET should be used for
     a confirmation view.

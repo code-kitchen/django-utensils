@@ -12,10 +12,10 @@ def get_env_variable(var_name):
     Get the environment variable or return exception.
     """
     try:
-      return os.environ[var_name]
+        return os.environ[var_name]
     except KeyError:
-      error_msg = "Set the %s environment variable" % var_name
-      raise ImproperlyConfigured(error_msg)
+        error_msg = "Set the %s environment variable" % var_name
+        raise ImproperlyConfigured(error_msg)
 
 
 def last_day_of_month(year, month):
@@ -43,9 +43,13 @@ def months_between(start, end):
     """
     start_month = start.month
     end_months = (end.year - start.year) * 12 + end.month + 1
-    dates = [datetime.datetime(year=yr, month=mn, day=1) for (yr, mn) in (
-              ((m - 1) / 12 + start.year, (m - 1) % 12 + 1) for m in range(
-                start_month, end_months))]
+    dates = [
+        datetime.datetime(year=yr, month=mn, day=1)
+        for (yr, mn) in (
+            ((m - 1) / 12 + start.year, (m - 1) % 12 + 1)
+            for m in range(start_month, end_months)
+        )
+    ]
     return dates
 
 
@@ -79,7 +83,7 @@ def remove_query_string(url):
     """
     Returns url without any query string parameters.
     """
-    return url.split('?')[0]
+    return url.split("?")[0]
 
 
 def to_unix_timestamp(dt, epoch=datetime.datetime(1970, 1, 1)):
