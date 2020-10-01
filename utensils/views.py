@@ -35,7 +35,7 @@ class BaseListView(PaginateMixin, OrderByMixin, SearchFormMixin, ListView):
             return self.filter_description
 
     def get_context_data(self, **kwargs):
-        data = super(BaseListView, self).get_context_data(**kwargs)
+        data = super().get_context_data(**kwargs)
         filter_description = self.get_filter_description()
         if filter_description:
             data.update({"filter_description": filter_description})

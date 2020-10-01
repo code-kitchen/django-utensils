@@ -27,7 +27,7 @@ class UniqueModelFieldsMixin:
     unique_fields = []
 
     def __init__(self, *args, **kwargs):
-        super(UniqueModelFieldsMixin, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
         def _make_validator(field, case_insensitive):
             model = self.Meta.model
