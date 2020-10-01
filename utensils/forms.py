@@ -1,4 +1,3 @@
-# encoding: utf-8
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 from django.utils.functional import curry
@@ -7,7 +6,7 @@ from django.utils.functional import curry
 class SearchForm(forms.Form):
     """
     Generic search form that can be used on any page.
-    
+
     Used by viewmixins.SearchFormMixin.
     """
 

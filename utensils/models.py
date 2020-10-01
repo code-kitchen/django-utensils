@@ -1,4 +1,3 @@
-# encoding: utf-8
 import hashlib
 import time
 
@@ -12,7 +11,7 @@ from django.utils.translation import ugettext_lazy as _
 class TimeStampedModel(models.Model):
     """
     Add a created and modified field to a model easily.
-    
+
     The hash functions can be used to build file upload paths that aren't
     easily guessable or distribute large numbers of files between 1000
     directories by using the time_hash as the first folder in the upload
