@@ -1,13 +1,6 @@
-# encoding: utf-8
 from functools import reduce
 import operator
-
-try:
-    # Python 3.
-    from urllib.parse import urlsplit
-except ImportError:
-    # Python 2.
-    from urllib import urlsplit
+from urllib.parse import urlsplit
 
 from django.conf import settings
 from django.contrib import messages
@@ -27,7 +20,7 @@ except ImportError:
 from .forms import SearchForm
 
 
-class MessageMixin(object):
+class MessageMixin:
     """
     Make it easy to display notification messages when using Class Based Views.
     """
@@ -35,42 +28,42 @@ class MessageMixin(object):
     def delete(self, request, *args, **kwargs):
         if not self.request.is_ajax() and hasattr(self, "success_message"):
             messages.success(self.request, self.success_message)
-        return super(MessageMixin, self).delete(request, *args, **kwargs)
+        return super().delete(request, *args, **kwargs)
 
     def form_valid(self, form):
         if not self.request.is_ajax() and hasattr(self, "success_message"):
             messages.success(self.request, self.success_message)
-        return super(MessageMixin, self).form_valid(form)
+        return super().form_valid(form)
 
     def forms_valid(self, *args, **kwargs):
         if not self.request.is_ajax() and hasattr(self, "success_message"):
             messages.success(self.request, self.success_message)
-        return super(MessageMixin, self).forms_valid(*args, **kwargs)
+        return super().forms_valid(*args, **kwargs)
 
     def formset_valid(self, form):
         if not self.request.is_ajax() and hasattr(self, "success_message"):
             messages.success(self.request, self.success_message)
-        return super(MessageMixin, self).formset_valid(form)
+        return super().formset_valid(form)
 
     def form_invalid(self, form):
         if not self.request.is_ajax() and hasattr(self, "error_message"):
             messages.error(self.request, self.error_message)
-        return super(MessageMixin, self).form_invalid(form)
+        return super().form_invalid(form)
 
     def forms_invalid(self, *args, **kwargs):
         if not self.request.is_ajax() and hasattr(self, "error_message"):
             messages.error(self.request, self.error_message)
-        return super(MessageMixin, self).forms_invalid(*args, **kwargs)
+        return super().forms_invalid(*args, **kwargs)
 
     def formset_invalid(self, form):
         if not self.request.is_ajax() and hasattr(self, "error_message"):
             messages.error(self.request, self.error_message)
-        return super(MessageMixin, self).formset_invalid(form)
+        return super().formset_invalid(form)
 
     def set_value(self, request, *args, **kwargs):
         if not self.request.is_ajax() and hasattr(self, "success_message"):
             messages.success(self.request, self.success_message)
-        return super(MessageMixin, self).set_value(request, *args, **kwargs)
+        return super().set_value(request, *args, **kwargs)
 
 
 class PermissionRequiredMixin(AccessMixin):
@@ -128,7 +121,7 @@ class PermissionRequiredMixin(AccessMixin):
         return super(PermissionRequiredMixin, self).dispatch(request, *args, **kwargs)
 
 
-class RedirectToNextMixin(object):
+class RedirectToNextMixin:
     def post(self, *args, **kwargs):
         next = self.request.GET.get("next")
         if next:
@@ -149,7 +142,7 @@ class StaffViewMixin(
     pass
 
 
-class PaginateMixin(object):
+class PaginateMixin:
     """
     Adds page size support to a ListView.
     """
@@ -166,7 +159,7 @@ class PaginateMixin(object):
         return paginate_by
 
 
-class OrderByMixin(object):
+class OrderByMixin:
     """
     Add support for ordering the queryset in your ListView.
     """
@@ -182,7 +175,7 @@ class OrderByMixin(object):
         return qs
 
     def get_context_data(self, **kwargs):
-        context_data = super(OrderByMixin, self).get_context_data(**kwargs)
+        context_data = super().get_context_data(**kwargs)
         context_data.update(
             {
                 "sort-col": self.request.GET.get("sort-col", ""),
@@ -192,7 +185,7 @@ class OrderByMixin(object):
         return context_data
 
 
-class SearchFormMixin(object):
+class SearchFormMixin:
     """
     Present a form element to filter a ListView, this class reimplements
     some of FormMixin due to it missing a super() call in get_context_data
@@ -220,7 +213,7 @@ class SearchFormMixin(object):
 
     def get_queryset(self):
         # First handle any other processing that must be done
-        qs = super(SearchFormMixin, self).get_queryset()
+        qs = super().get_queryset()
         if qs and self.search_filter:
             # If we have a queryset and a filter to apply to it, build a list
             # of fields to search and what to search them with.
@@ -244,7 +237,7 @@ class SearchFormMixin(object):
     def get_context_data(self, **kwargs):
         # Add the search form to the page
         kwargs["search_form"] = self.search_form
-        return super(SearchFormMixin, self).get_context_data(**kwargs)
+        return super().get_context_data(**kwargs)
 
     def get(self, request, *args, **kwargs):
         self.search_form = self.make_form(request)
@@ -252,16 +245,16 @@ class SearchFormMixin(object):
             # If the user entered any data, store it so get_queryset can
             # use it.
             self.search_filter = self.search_form.cleaned_data["search"]
-        return super(SearchFormMixin, self).get(request, *args, **kwargs)
+        return super().get(request, *args, **kwargs)
 
     def post(self, request, *args, **kwargs):
         self.search_form = self.make_form(request)
         if self.search_form.is_valid():
             self.search_filter = self.search_form.cleaned_data["search"]
-        return super(SearchFormMixin, self).post(request, *args, **kwargs)
+        return super().post(request, *args, **kwargs)
 
 
-class SetModelFieldMixin(object):
+class SetModelFieldMixin:
     """
     Mixin that can be used to set a value on a detail view (i.e. the view must
     have a self.get_object() function) on POST.

@@ -1,4 +1,3 @@
-# encoding: utf-8
 from django.conf import settings
 
 from storages.backends.s3boto import S3BotoStorage
@@ -21,13 +20,13 @@ Example settings config:
           'default_acl': 'private',       # AWS_DEFAULT_ACL
       },
   }
-  
+
   AWS_ACCESS_KEY_ID = 'XXXXXXXXXXXXXXXXXXXX'
   AWS_SECRET_ACCESS_KEY = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
   AWS_STORAGE_BUCKET_NAME = 'bucket'
   AWS_PRELOAD_METADATA = True
   AWS_S3_SECURE_URLS = False
-  
+
   STATICFILES_STORAGE = 'utensils.storage.StaticRootS3BotoStorage'
   DEFAULT_FILE_STORAGE = 'utensils.storage.MediaRootS3BotoStorage'
 """

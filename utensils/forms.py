@@ -1,4 +1,3 @@
-# encoding: utf-8
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 from django.utils.functional import curry
@@ -7,14 +6,14 @@ from django.utils.functional import curry
 class SearchForm(forms.Form):
     """
     Generic search form that can be used on any page.
-    
+
     Used by viewmixins.SearchFormMixin.
     """
 
     search = forms.CharField(label="", required=False, widget=forms.widgets.TextInput())
 
 
-class UniqueModelFieldsMixin(object):
+class UniqueModelFieldsMixin:
     """
     Mixin that enforces unique fields on ModelForm form fields.
 
@@ -28,7 +27,7 @@ class UniqueModelFieldsMixin(object):
     unique_fields = []
 
     def __init__(self, *args, **kwargs):
-        super(UniqueModelFieldsMixin, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
         def _make_validator(field, case_insensitive):
             model = self.Meta.model
@@ -45,7 +44,7 @@ class UniqueModelFieldsMixin(object):
 
             if qs.exists():
                 raise forms.ValidationError(
-                    _(u"That {} is not available.".format(field.replace("_", " ")))
+                    _("That {} is not available.".format(field.replace("_", " ")))
                 )
             return value
 

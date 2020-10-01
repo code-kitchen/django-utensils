@@ -1,4 +1,3 @@
-# encoding: utf-8
 from django.views.generic import ListView
 from django.views.generic.detail import (
     BaseDetailView,
@@ -11,14 +10,14 @@ from .viewmixins import OrderByMixin, PaginateMixin, SearchFormMixin, SetModelFi
 class BaseListView(PaginateMixin, OrderByMixin, SearchFormMixin, ListView):
     """
     Defines a base list view that supports pagination, ordering and basic search.
-    
+
     Supports a filter description that can be used in templates:
-    
+
         class ActiveCustomerList(BaseListView):
-            filter_description = u"Active"
+            filter_description = "Active"
             queryset = Customer.active.all()
-    
-    
+
+
         {% block content %}
           <h2>
             {% if filter_description %}
@@ -36,7 +35,7 @@ class BaseListView(PaginateMixin, OrderByMixin, SearchFormMixin, ListView):
             return self.filter_description
 
     def get_context_data(self, **kwargs):
-        data = super(BaseListView, self).get_context_data(**kwargs)
+        data = super().get_context_data(**kwargs)
         filter_description = self.get_filter_description()
         if filter_description:
             data.update({"filter_description": filter_description})
